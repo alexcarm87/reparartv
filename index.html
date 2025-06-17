@@ -71,14 +71,26 @@
       color: white;
       margin-top: 3rem;
     }
-    .contact-icons a {
-      color: white;
-      margin: 0 1rem;
-      font-size: 1.5rem;
-      transition: 0.3s;
+    .contact-icons {
+      text-align: center;
+      margin-top: 2rem;
     }
-    .contact-icons a:hover {
-      color: #00bfff;
+    .whatsapp-btn {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: background-color 0.3s;
+    }
+    .whatsapp-btn i {
+      margin-right: 0.5rem;
+    }
+    .whatsapp-btn:hover {
+      background-color: #1ebe5d;
     }
   </style>
 </head>
@@ -118,11 +130,11 @@
 
     <section id="contacto" style="margin-top: 4rem;">
       <h2>Contacto</h2>
-      <p>Podés escribirnos por WhatsApp, Facebook o correo:</p>
+      <p style="text-align: center;">¿Querés consultarme algo? Escribime directo por WhatsApp:</p>
       <div class="contact-icons">
-        <a href="https://wa.me/5491123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://facebook.com/reparartv" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="mailto:alejandro@reparartv.online"><i class="fas fa-envelope"></i></a>
+        <a class="whatsapp-btn" href="https://wa.me/541133564247" target="_blank">
+          <i class="fab fa-whatsapp"></i> Escribime al WhatsApp
+        </a>
       </div>
     </section>
   </main>

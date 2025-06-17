@@ -5,115 +5,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Servicio técnico especializado en reparación de TV y notebooks en zona sur. Retiro a domicilio, presupuesto sin cargo y garantía de 90 días.">
   <title>RepararTV - Alejandro Carmona</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f7f9fc;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f1f1;
       color: #333;
     }
     header {
-      background-color: #0077cc;
+      background: #003366;
       color: white;
-      padding: 1.5rem;
+      padding: 2rem 1rem;
       text-align: center;
     }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
     nav {
-      background-color: #005fa3;
+      background: #005fa3;
       display: flex;
       justify-content: center;
-      padding: 0.5rem;
+      gap: 2rem;
+      padding: 1rem 0;
     }
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 1rem;
+      font-weight: bold;
     }
-    section {
-      padding: 2rem;
-      max-width: 900px;
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 1000px;
       margin: auto;
-    }
-    .servicio {
-      background: white;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .cta {
-      background-color: #0077cc;
-      color: white;
-      text-align: center;
       padding: 2rem;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #e9f1fb;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .card i {
+      font-size: 3rem;
+      color: #0077cc;
+      margin-bottom: 1rem;
     }
     footer {
-      background: #eee;
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-    .boton {
-      background: #005fa3;
+      padding: 2rem 1rem;
+      background: #003366;
       color: white;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: bold;
+      margin-top: 3rem;
+    }
+    .contact-icons a {
+      color: white;
+      margin: 0 1rem;
+      font-size: 1.5rem;
+      transition: 0.3s;
+    }
+    .contact-icons a:hover {
+      color: #00bfff;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Reparar TV y Notebooks</h1>
-    <p>Servicio técnico especializado - Alejandro Carmona</p>
+    <h1>RepararTV</h1>
+    <p>Servicio técnico en zona sur - Alejandro Carmona</p>
   </header>
 
   <nav>
     <a href="#servicios">Servicios</a>
     <a href="#contacto">Contacto</a>
-    <a href="#sobremi">Sobre mí</a>
   </nav>
 
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <div class="servicio">
-      <h3>Reparación de Notebooks</h3>
-      <p>Reparamos todo tipo de fallas: encendido, BIOS, chips, carga, soldaduras SMD, pantallas y más.</p>
-    </div>
-    <div class="servicio">
-      <h3>Reparación de Televisores</h3>
-      <p>Solucionamos problemas de encendido, imagen, sonido, fuentes dañadas y fallas en Smart TVs.</p>
-    </div>
-    <div class="servicio">
-      <h3>Retiro y Entrega a Domicilio</h3>
-      <p>Pasamos por tu casa, sin cargo adicional. Servicio rápido y seguro.</p>
-    </div>
-    <div class="servicio">
-      <h3>Presupuesto sin Cargo</h3>
-      <p>Diagnosticamos tu equipo y te damos un presupuesto gratuito, sin compromiso.</p>
-    </div>
-    <div class="servicio">
-      <h3>Garantía</h3>
-      <p>Ofrecemos garantía escrita de 90 días en todas nuestras reparaciones.</p>
-    </div>
-  </section>
+  <main>
+    <section id="servicios">
+      <h2>¿Qué reparamos?</h2>
+      <div class="services">
+        <div class="card">
+          <i class="fas fa-tv"></i>
+          <h3>Televisores</h3>
+          <p>Reparamos fallas de imagen, encendido, sonido, pantallas rotas, backlight, y más.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-laptop"></i>
+          <h3>Notebooks</h3>
+          <p>Problemas de carga, pantalla, teclado, formateo, cambio de SSD o batería, BIOS, etc.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-plug"></i>
+          <h3>Otros equipos</h3>
+          <p>Consolas, fuentes, parlantes JBL, placas, módulos, y todo lo que tenga un circuito.</p>
+        </div>
+      </div>
+    </section>
 
-  <section id="sobremi">
-    <h2>Sobre mí</h2>
-    <p>Mi nombre es Alejandro Jonas Carmona. Soy técnico especializado en electrónica con años de experiencia en reparación de notebooks, televisores y placas electrónicas. Trabajo con herramientas profesionales y trato cada reparación como si fuera para mí. La honestidad y la dedicación son mis pilares.</p>
-  </section>
-
-  <section id="contacto" class="cta">
-    <h2>¿Tenés un equipo para reparar?</h2>
-    <p>Contactame por WhatsApp y contame qué problema tiene. ¡Estoy para ayudarte!</p>
-    <a href="https://wa.me/541133564247" class="boton">Contactar por WhatsApp</a>
-  </section>
+    <section id="contacto" style="margin-top: 4rem;">
+      <h2>Contacto</h2>
+      <p>Podés escribirnos por WhatsApp, Facebook o correo:</p>
+      <div class="contact-icons">
+        <a href="https://wa.me/5491123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com/reparartv" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="mailto:alejandro@reparartv.online"><i class="fas fa-envelope"></i></a>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2025 Alejandro Jonas Carmona - Reparaciones electrónicas | Zona Sur</p>
+    <p>&copy; 2025 RepararTV - Alejandro Carmona. Todos los derechos reservados.</p>
   </footer>
+
 </body>
 </html>

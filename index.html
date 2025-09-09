@@ -2,21 +2,20 @@
 <html lang="es">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-792233915">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-792233915"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-792233915');
+  </script>
 
-  gtag('config', 'AW-792233915');
-</script>
-  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Servicio técnico especializado en reparación de TV y notebooks en zona sur. Retiro a domicilio, presupuesto sin cargo y garantía de 90 días.">
+  <meta name="description" content="Servicio técnico especializado en reparación de TV, notebooks y celulares en zona sur. Retiro a domicilio, presupuesto sin cargo y garantía de 90 días.">
   <title>RepararTv - El mejor Servicio del Mundo</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body {
       margin: 0;
@@ -82,26 +81,44 @@
       color: white;
       margin-top: 3rem;
     }
-    .contact-icons {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .whatsapp-btn {
-      display: inline-block;
+    /* Estilos botón flotante */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
       background-color: #25D366;
       color: white;
-      padding: 1rem 2rem;
+      padding: 0.8rem 1.2rem;
       font-size: 1.2rem;
-      border-radius: 5px;
+      border-radius: 50px;
       text-decoration: none;
-      margin-top: 1rem;
-      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s, transform 0.2s;
+      z-index: 1000;
     }
-    .whatsapp-btn i {
+    .whatsapp-float i {
       margin-right: 0.5rem;
+      font-size: 1.5rem;
     }
-    .whatsapp-btn:hover {
+    .whatsapp-float:hover {
       background-color: #1ebe5d;
+      transform: scale(1.05);
+    }
+    .whatsapp-message {
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      background: white;
+      color: #333;
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      z-index: 999;
+      max-width: 200px;
+      text-align: center;
     }
   </style>
 </head>
@@ -109,7 +126,7 @@
 
   <header>
     <h1>RepararTv</h1>
-    <p>Servicio técnico en zona sur - El Mejor!</p>
+    <p>Servicio técnico en zona sur - ¡El Mejor!</p>
   </header>
 
   <nav>
@@ -124,35 +141,45 @@
         <div class="card">
           <i class="fas fa-tv"></i>
           <h3>Televisores</h3>
-          <p>Reparamos fallas de imagen, encendido, sonido, Retroiluminacion, y más.</p>
+          <p>Reparamos fallas de imagen, encendido, sonido, retroiluminación y más.</p>
         </div>
         <div class="card">
           <i class="fas fa-laptop"></i>
           <h3>Notebooks</h3>
-          <p>Placa en corto, pantalla, teclado, Sistema, cambio de SSD o batería, BIOS, etc.</p>
+          <p>Placa en corto, pantalla, teclado, sistema, cambio de SSD o batería, BIOS, etc.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Celulares</h3>
+          <p>Cambio de módulos y pantallas, reparación de pines de carga y más.</p>
         </div>
         <div class="card">
           <i class="fas fa-plug"></i>
           <h3>Otros equipos</h3>
-          <p>Consolas, fuentes, parlantes Bluetooh, placas, módulos, y todo lo que tenga un circuito.</p>
+          <p>Consolas, fuentes, parlantes Bluetooth, placas, módulos y todo lo que tenga un circuito.</p>
         </div>
       </div>
     </section>
 
     <section id="contacto" style="margin-top: 4rem;">
       <h2>Contacto</h2>
-      <p style="text-align: center;">¿Querés consultarme algo? Escribime directo por WhatsApp:</p>
-      <div class="contact-icons">
-        <a class="whatsapp-btn" href="https://wa.me/541133564247" target="_blank">
-          <i class="fab fa-whatsapp"></i> Escribime al WhatsApp
-        </a>
-      </div>
+      <p style="text-align: center;">Podés escribirme directo por WhatsApp con el botón verde siempre visible en la pantalla.</p>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2025 RepararTV - Servicio Técnico de 1ra calidad. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Mensaje motivador flotante -->
+  <div class="whatsapp-message">
+    ¡Dale, no lo dejes morir! Lo reparamos ya 💪
+  </div>
+
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/541133564247" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i> WhatsApp
+  </a>
 
 </body>
 </html>

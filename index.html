@@ -1,132 +1,506 @@
 <!doctype html>
 <html lang="es">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GJSX5ZPMDH">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GJSX5ZPMDH');
-</script>
-  <head>
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RepararTV Servicios — Reparación de Smart TV y Notebooks</title>
-  <meta name="description" content="Reparacion de Smart TV, computadoras y notebooks. Diagnóstico sin cargo. Servicio técnico en Lomas de Zamora - Temperley." />
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GJSX5ZPMDH">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <title>RepararTV Servicios — Servicio Técnico Especializado</title>
+  <meta name="description" content="Reparación de Smart TV, Notebooks, Consolas e Impresoras en Temperley, Barrio San José. Taller en casa propia y presupuesto en el día." />
 
-  gtag('config', 'G-GJSX5ZPMDH');
-</script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJSX5ZPMDH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GJSX5ZPMDH');
+  </script>
+
   <style>
-    :root{--accent:#0b7cd1;--dark:#0b2b3a;--muted:#6b7680;--bg:#f6f8fa}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
-    header{background:white;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(11,43,58,.06)}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:54px;height:54px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#3fb0ff);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px}
-    nav a{margin-left:18px;color:var(--dark);text-decoration:none;font-weight:600}
-    .hero{display:grid;grid-template-columns:1fr;gap:18px;padding:44px 20px;max-width:1100px;margin:0 auto}
-    .hero-inner{background:white;padding:28px;border-radius:12px;box-shadow:0 6px 30px rgba(11,43,58,.06)}
-    .title{font-size:28px;margin:0 0 8px}
-    .lead{color:var(--muted);margin:0 0 18px}
-    .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700}
-    .btn-primary{background:var(--accent);color:white}
-    .btn-ghost{background:transparent;border:2px solid #e6eef7;color:var(--dark)}
-    .services{display:grid;gap:14px;margin-top:18px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
-    .card{background:white;padding:18px;border-radius:10px;box-shadow:0 6px 20px rgba(11,43,58,.04)}
-    footer{margin-top:28px;padding:18px 20px;background:#fff;border-top:1px solid #eef3f7}
-    .contact{display:flex;flex-direction:column;gap:8px}
-    .whatsapp{display:inline-flex;align-items:center;gap:10px}
-    .small{font-size:13px;color:var(--muted)}
-    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)} }
-    @media (max-width:600px){header{flex-direction:column;align-items:flex-start} .hero{padding:22px} .grid{grid-template-columns:1fr} .title{font-size:22px}}
+    :root {
+      --accent: #00ff66;
+      --accent-glow: rgba(0, 255, 102, 0.4);
+      --alert: #ff0055;
+      --alert-glow: rgba(255, 0, 85, 0.45);
+      --warning: #ffb703;
+      --dark: #0a0f0d;
+      --card-bg: rgba(17, 24, 19, 0.92);
+      --muted: #83a08d;
+      --bg: #050806;
+      --whatsapp: #25d366;
+      --whatsapp-hover: #1da851;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: #e0f5e9;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Canvas para el efecto Matrix */
+    #matrix-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.15;
+    }
+
+    /* Scanlines CRT */
+    .scanlines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(rgba(18, 30, 18, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
+      background-size: 100% 4px;
+    }
+
+    header, main, footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    header {
+      background: var(--card-bg);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 255, 102, 0.25);
+      backdrop-filter: blur(8px);
+    }
+
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .logo-tv {
+      width: 48px;
+      height: 48px;
+      background: #050d08;
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 12px var(--accent-glow);
+      flex-shrink: 0;
+    }
+
+    .logo-tv svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--accent);
+    }
+
+    nav a {
+      margin-left: 18px;
+      color: #e0f5e9;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 20px;
+    }
+
+    /* MÓDULO PERFECTO DE DIAGNÓSTICO INTERACTIVO */
+    .diagnostic-box {
+      background: rgba(18, 10, 15, 0.95);
+      border: 2px solid var(--alert);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 30px var(--alert-glow);
+      backdrop-filter: blur(12px);
+    }
+
+    .diagnostic-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 0, 85, 0.25);
+      padding-bottom: 12px;
+    }
+
+    .alert-badge {
+      color: var(--alert);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+    }
+
+    .trust-badge {
+      background: rgba(0, 255, 102, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .diagnostic-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 16px;
+      line-height: 1.3;
+    }
+
+    .problem-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tag-btn {
+      background: rgba(255, 0, 85, 0.08);
+      border: 1px solid rgba(255, 0, 85, 0.4);
+      color: #ffdde6;
+      padding: 11px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .tag-btn:hover {
+      background: var(--alert);
+      color: #ffffff;
+      box-shadow: 0 0 18px var(--alert-glow);
+      transform: translateY(-2px);
+    }
+
+    .relief-banner {
+      background: rgba(0, 255, 102, 0.08);
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #d1fae5;
+    }
+
+    .hero-inner {
+      background: var(--card-bg);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 255, 102, 0.25);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+    }
+
+    .title {
+      font-size: 26px;
+      margin: 0 0 12px;
+      color: #ffffff;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+      font-size: 15px;
+    }
+
+    .btn-whatsapp {
+      background: var(--whatsapp);
+      color: white;
+      box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+    }
+
+    .btn-whatsapp:hover {
+      background: var(--whatsapp-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 0 22px rgba(37, 211, 102, 0.7);
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .card {
+      background: rgba(5, 8, 6, 0.75);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 255, 102, 0.18);
+      transition: all 0.25s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 18px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .icon-box {
+      background: rgba(0, 255, 102, 0.12);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon-box i { width: 22px; height: 22px; }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--whatsapp);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
+      z-index: 999;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.8);
+    }
+
+    .whatsapp-float i { width: 32px; height: 32px; }
+
+    footer {
+      margin-top: 28px;
+      padding: 24px 20px;
+      background: var(--card-bg);
+      border-top: 1px solid rgba(0, 255, 102, 0.25);
+    }
+
+    .small { font-size: 13.5px; color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .services { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .hero { padding: 16px 10px; }
+      .grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
+
+  <canvas id="matrix-canvas"></canvas>
+  <div class="scanlines"></div>
+
+  <a class="whatsapp-float" href="https://wa.me/541133564247" target="_blank" rel="noopener" title="Contactar por WhatsApp">
+    <i data-lucide="message-square"></i>
+  </a>
+
   <header>
     <div class="brand">
-      <div class="logo">RT</div>
+      <div class="logo-tv">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M17 2l-5 5-5-5"></path>
+        </svg>
+      </div>
       <div>
-        <div style="font-weight:800">RepararTV Servicios</div>
-        <div class="small">Reparacion de Smart TV • Computadoras • Notebooks</div>
+        <div style="font-weight:800; font-size: 18px; color: #fff;">RepararTV Servicios</div>
+        <div class="small">Taller Físico en Casa Propia — Temperley, B° San José</div>
       </div>
     </div>
     <nav>
       <a href="#servicios">Servicios</a>
-      <a href="#precios">Precios</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#contacto">Ubicación</a>
     </nav>
   </header>
 
   <main class="hero">
-    <div class="hero-inner">
-      <h1 class="title">Reparación profesional de Smart TV, Computadoras en General, Impresoras.</h1>
-      <p class="lead">Servicio técnico en Lomas de Zamora - Temperley. Diagnóstico sin cargo. Smatphone. Reparación integral de Notebooks.</p>
 
-      <div class="cta">
-        <a class="btn btn-primary" href="https://wa.me/541133564247" target="_blank" rel="noopener">Contactar por WhatsApp</a>
-        <a class="btn btn-ghost" href="#contacto">Ver datos de contacto</a>
+    <!-- MÓDULO PERFECTO DE DIAGNÓSTICO INTERACTIVO -->
+    <div class="diagnostic-box">
+      <div class="diagnostic-topbar">
+        <span class="alert-badge">
+          <i data-lucide="alert-triangle" style="width:16px; height:16px;"></i> ¿Qué falla presenta tu equipo?
+        </span>
+        <span class="trust-badge">
+          <i data-lucide="home" style="width:14px; height:14px;"></i> Taller en Casa Propia (100% Confianza)
+        </span>
       </div>
 
-      <section id="servicios" style="margin-top:22px">
-        <h3 style="margin:0 0 8px">Nuestros servicios</h3>
+      <div class="diagnostic-title">
+        Seleccioná la falla de tu equipo para coordinar revisión inmediata:
+      </div>
+
+      <div class="problem-tags">
+        <a class="tag-btn" href="https://wa.me/541133564247?text=Hola!%20Mi%20TV%20se%20escucha%20pero%20no%20da%20imagen." target="_blank" rel="noopener">
+          <i data-lucide="volume-2"></i> TV: Se escucha pero la pantalla está negra
+        </a>
+        <a class="tag-btn" href="https://wa.me/541133564247?text=Hola!%20Mi%20TV%20se%20queda%20trancado%20en%20el%20logo." target="_blank" rel="noopener">
+          <i data-lucide="tv"></i> TV: Se queda congelado en el logo
+        </a>
+        <a class="tag-btn" href="https://wa.me/541133564247?text=Hola!%20Mi%20Notebook%20enciende%20pero%20no%20da%20imagen." target="_blank" rel="noopener">
+          <i data-lucide="laptop"></i> Notebook: Enciende luces pero pantalla negra
+        </a>
+        <a class="tag-btn" href="https://wa.me/541133564247?text=Hola!%20Mi%20equipo%20hizo%20chispazo%20y%20no%20prende." target="_blank" rel="noopener">
+          <i data-lucide="zap-off"></i> Equipo no prende nada / Cortocircuito
+        </a>
+        <a class="tag-btn" href="https://wa.me/541133564247?text=Hola!%20Mi%20consola%20enciende%20y%20se%20apaga%20sola." target="_blank" rel="noopener">
+          <i data-lucide="gamepad-2"></i> Consola / TV: Prende y se apaga sola
+        </a>
+      </div>
+
+      <!-- ALIVIO Y GARANTÍA -->
+      <div class="relief-banner">
+        🛡️ <strong>Tranquilidad absoluta:</strong> Traés tu equipo directamente a mi taller en mi domicilio particular. El 90% de las fallas se reparan en el día y <strong>si no tiene solución, NO PAGÁS NADA</strong>.
+      </div>
+
+      <a class="btn btn-whatsapp" style="width: 100%; justify-content: center; font-size: 16px;" href="https://wa.me/541133564247?text=Hola!%20Quiero%20consultar%20por%20un%20presupuesto." target="_blank" rel="noopener">
+        <i data-lucide="message-square"></i> Consultar otra falla directamente por WhatsApp
+      </a>
+    </div>
+
+    <div class="hero-inner">
+      <h1 class="title">Servicio Técnico Especializado en Temperley</h1>
+      <p class="small" style="font-size: 15px; margin-bottom: 24px; color: #a3c2b0;">
+        Reparación profesional de Smart TV, Computadoras, MacBooks, Consolas, Celulares e Impresoras. Presupuesto sin cargo en el día.
+      </p>
+
+      <section id="servicios">
+        <h3 style="margin:0 0 16px; font-size: 18px; color: var(--accent); display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="cpu"></i> Equipos que reparamos
+        </h3>
         <div class="services">
+          
           <div class="card">
-            <strong>Reparación de Smart TV</strong>
-            <p class="small">Diagnóstico y reparación, fuentes, firmware y conectividad Smart (Wi‑Fi/Apps).</p>
+            <div class="card-header">
+              <div class="icon-box"><i data-lucide="tv"></i></div>
+              <strong>Smart TV</strong>
+            </div>
+            <p class="small">Cambio de tiras LED, fuentes de alimentación, placas Main y firmware.</p>
           </div>
 
           <div class="card">
-            <strong>Reparación de Notebooks</strong>
-            <p class="small">Reemplazo de pantallas, teclados, baterías, reparación de motherboards.</p>
+            <div class="card-header">
+              <div class="icon-box"><i data-lucide="laptop"></i></div>
+              <strong>Notebooks & MacBooks</strong>
+            </div>
+            <p class="small">Cambio de pantallas, teclados, reparación de motherboards y cortocircuitos.</p>
           </div>
 
           <div class="card">
-            <strong>Computadoras en general</strong>
-            <p class="small">Armado, actualización, limpieza, optimización y soporte a domicilio o para empresas pequeñas.</p>
+            <div class="card-header">
+              <div class="icon-box"><i data-lucide="gamepad-2"></i></div>
+              <strong>Consolas de Videojuegos</strong>
+            </div>
+            <p class="small">Mantenimiento térmico, puertos HDMI, fuentes de poder y lecturas de disco.</p>
           </div>
 
           <div class="card">
-            <strong>Motherboards / Diagnóstico avanzado</strong>
-            <p class="small">Reparaciones SMD, reemplazo de ICs, reprogramación de BIOS.</p>
+            <div class="card-header">
+              <div class="icon-box"><i data-lucide="printer"></i></div>
+              <strong>Impresoras & PC</strong>
+            </div>
+            <p class="small">Mantenimiento de impresoras tinta/láser, armado y limpieza de computadoras.</p>
           </div>
 
-          <div class="card">
-            <strong>Impresoras Tinta/Laser</strong>
-            <p class="small">Reparacion de impresoras en General!.</p>
-          </div>
-
-          <div class="card">
-            <strong>Soporte y asesoramiento</strong>
-            <p class="small">Asesoramiento sobre reemplazo de equipos, presupuesto y garantía de trabajo.</p>
-          </div>
         </div>
       </section>
 
-      <section id="precios" style="margin-top:22px">
-        <h3 style="margin:0 0 8px">Precios / Atención</h3>
+      <section id="precios" style="margin-top:28px">
         <div class="grid">
           <div class="card">
-            <strong>Diagnóstico sin cargo</strong>
-            <p class="small">Traé tu equipo o coordinamos retiro. Ofrecemos informe detallado y presupuesto antes de trabajar.</p>
+            <div class="card-header">
+              <div class="icon-box"><i data-lucide="zap"></i></div>
+              <strong>Presupuesto en el Día</strong>
+            </div>
+            <p class="small">Traé tu equipo al taller y tenés respuesta técnica en pocas horas.</p>
           </div>
+
           <div class="card">
-            <strong>Presupuesto claro</strong>
-            <p class="small">Repuestos con garantía y mano de obra incluida.</p>
+            <div class="card-header">
+              <div class="icon-box"><i data-lucide="shield-check"></i></div>
+              <strong>Garantía Escrita</strong>
+            </div>
+            <p class="small">Todas las reparaciones y repuestos nuevos cuentan con garantía escrita.</p>
           </div>
+
           <div class="card">
-            <div style="font-weight:800">Garantía de trabajo</div>
-            <p class="small">Garantía en reparación según la pieza y la intervención (consulte).</p>
+            <div class="card-header">
+              <div class="icon-box"><i data-lucide="home"></i></div>
+              <strong>Atención Directa y Segura</strong>
+            </div>
+            <p class="small">Taller en casa propia en Temperley, Barrio San José. Trato directo sin intermediarios.</p>
           </div>
         </div>
       </section>
@@ -135,27 +509,48 @@
   </main>
 
   <footer id="contacto">
-    <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center">
-      <div class="contact">
-        <div style="font-weight:800">RepararTV Servicios</div>
-        <div class="small">Lomas de Zamora – Temperley</div>
-        <div class="small">Número WhatsApp: <a class="whatsapp" href="https://wa.me/541133564247" target="_blank">+54 11 3356-4247</a></div>
-        <div class="small">Horario: Lun a Vie 9:00 – 18:00 (consultar)</div>
+    <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center">
+      <div>
+        <div style="font-weight:800; font-size: 16px; color:#fff;">RepararTV Servicios</div>
+        <div class="small" style="color: var(--accent); font-weight: bold;">Temperley, Barrio San José (Taller Particular)</div>
+        <div class="small">WhatsApp: +54 11 3356-4247</div>
       </div>
-
-      <div style="min-width:240px">
-        <div style="background:white;padding:12px;border-radius:10px;box-shadow:0 6px 20px rgba(11,43,58,.04)">
-          <div style="font-weight:700;margin-bottom:8px">Solicitá tu diagnóstico</div>
-          <div class="small" style="margin-bottom:10px">Enviá un mensaje por WhatsApp con el modelo y el problema para coordinar.</div>
-          <a class="btn btn-primary" href="https://wa.me/541133564247" target="_blank">Escribir por WhatsApp</a>
-        </div>
+      <div>
+        <a class="btn btn-whatsapp" href="https://wa.me/541133564247" target="_blank" rel="noopener">
+          <i data-lucide="message-square"></i> Hablar con el Técnico
+        </a>
       </div>
     </div>
   </footer>
 
   <script>
-    // Pequeñas mejoras: abrir wa.me en nueva pestaña y track simple
-    document.querySelectorAll('a[href^="https://wa.me"]').forEach(a=>a.setAttribute('rel','noopener'));
+    lucide.createIcons();
+
+    /* Fondo Matrix */
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const textMatrix = "REPARARTV 0123456789 TEMPERLEY SERVICE";
+    const fontSize = 14;
+    const columns = Math.floor(window.innerWidth / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(5, 8, 6, 0.08)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ff66';
+      ctx.font = fontSize + 'px monospace';
+      for (let i = 0; i < drops.length; i++) {
+        const char = textMatrix.charAt(Math.floor(Math.random() * textMatrix.length));
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+    }
+    setInterval(drawMatrix, 33);
   </script>
 </body>
 </html>
